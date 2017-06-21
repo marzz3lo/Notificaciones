@@ -3,6 +3,7 @@ package moonlapse.com.notificaciones;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int notificacionId = 001;
                 Notification notificacion = new NotificationCompat.Builder(MainActivity.this)
+                        .setLargeIcon(BitmapFactory.decodeResource( getResources(), R.drawable.escudo_upv))
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Título")
                         .setContentText(Html.fromHtml("<b>Notificación</b> <u>Android Wear</u>"))
