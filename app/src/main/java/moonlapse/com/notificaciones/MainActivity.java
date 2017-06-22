@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,10 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,14 +53,22 @@ public class MainActivity extends AppCompatActivity {
                 NotificationCompat.BigTextStyle segundaPg = new NotificationCompat.BigTextStyle();
                 segundaPg.setBigContentTitle("Página 2").bigText("Más texto.");
 
+                NotificationCompat.BigTextStyle terceraPg = new NotificationCompat.BigTextStyle();
+                terceraPg.setBigContentTitle("Página 3").bigText("Más texto aún.");
+
                 // Creamos una notification para la segunda página
                 Notification notificacionPg2 = new NotificationCompat.Builder( MainActivity.this) .setStyle(segundaPg) .build();
+                Notification notificacionPg3 = new NotificationCompat.Builder( MainActivity.this) .setStyle(terceraPg) .build();
+
+                List<Notification> listaPaginas = new ArrayList<Notification>();
+                listaPaginas.add(notificacionPg2);
+                listaPaginas.add(notificacionPg3);
 
                 NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender()
                         .setHintHideIcon(true)
                         .setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
                         .addActions(acciones)
-                        .addPage(notificacionPg2);
+                        .addPages(listaPaginas);
 
                 Notification notificacion = new NotificationCompat.Builder(MainActivity.this)
 //                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
