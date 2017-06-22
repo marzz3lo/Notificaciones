@@ -45,10 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
                 int notificacionId = 001;
 
+                // Creamos un BigTextStyle para la segunda página
+                NotificationCompat.BigTextStyle segundaPg = new NotificationCompat.BigTextStyle();
+                segundaPg.setBigContentTitle("Página 2").bigText("Más texto.");
+
+                // Creamos una notification para la segunda página
+                Notification notificacionPg2 = new NotificationCompat.Builder( MainActivity.this) .setStyle(segundaPg) .build();
+
                 NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender()
-                                                                                             .setHintHideIcon(true)
-                                                                                             .setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
-                                                                                             .addActions(acciones);
+                        .setHintHideIcon(true)
+                        .setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
+                        .addActions(acciones)
+                        .addPage(notificacionPg2);
 
                 Notification notificacion = new NotificationCompat.Builder(MainActivity.this)
 //                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
