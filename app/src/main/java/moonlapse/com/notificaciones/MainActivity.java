@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 terceraPg.setBigContentTitle("Página 3").bigText("Más texto aún.");
 
                 // Creamos una notification para la segunda página
-                Notification notificacionPg2 = new NotificationCompat.Builder( MainActivity.this) .setStyle(segundaPg) .build();
-                Notification notificacionPg3 = new NotificationCompat.Builder( MainActivity.this) .setStyle(terceraPg) .build();
+                Notification notificacionPg2 = new NotificationCompat.Builder(MainActivity.this).setStyle(segundaPg).build();
+                Notification notificacionPg3 = new NotificationCompat.Builder(MainActivity.this).setStyle(terceraPg).build();
 
                 List<Notification> listaPaginas = new ArrayList<Notification>();
                 listaPaginas.add(notificacionPg2);
@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
                         .build();
                 notificationManager.notify(notificacionId2, notificacion2);
 
+                int idNotificacion3 = 003;
+                Notification notificacion3 = new NotificationCompat.Builder(MainActivity.this).setContentTitle("2 notificaciones UPV").setSmallIcon(R.mipmap.ic_action_attach)
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv)).setStyle(new NotificationCompat.InboxStyle().addLine("Nueva Conferencia Los neutrinos").addLine("Nuevo curso Android Wear").setBigContentTitle("2 notificaciones UPV").setSummaryText("info@upv.es")).setNumber(2)
+                        .setGroup(MI_GRUPO_DE_NOTIFIC).setGroupSummary(true).build();
+                notificationManager.notify(idNotificacion3, notificacion3);
             }
         });
     }
