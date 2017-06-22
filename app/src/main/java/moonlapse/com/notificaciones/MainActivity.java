@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
+    final static String MI_GRUPO_DE_NOTIFIC = "mi_grupo_de_notific";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 acciones.add(new NotificationCompat.Action(R.mipmap.ic_action_locate, "Ver mapa", intencionPendienteMapa));
 
                 int notificacionId = 001;
-
                 // Creamos un BigTextStyle para la segunda página
                 NotificationCompat.BigTextStyle segundaPg = new NotificationCompat.BigTextStyle();
                 segundaPg.setBigContentTitle("Página 2").bigText("Más texto.");
@@ -78,10 +78,21 @@ public class MainActivity extends AppCompatActivity {
                         .setContentIntent(intencionPendienteMapa)
                         .addAction(R.mipmap.ic_action_call, "llamar", intencionPendienteLlamar)
                         .extend(wearableExtender)
+                        .setGroup(MI_GRUPO_DE_NOTIFIC)
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(s + s + s + s))
                         .build();
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
                 notificationManager.notify(notificacionId, notificacion);
+
+                int notificacionId2 = 002;
+                Notification notificacion2 = new NotificationCompat.Builder(MainActivity.this)
+                        .setSmallIcon(R.mipmap.ic_action_mail_add)
+                        .setContentTitle("Nueva Conferencia")
+                        .setContentText("Los neutrinos")
+                        .setGroup(MI_GRUPO_DE_NOTIFIC)
+                        .build();
+                notificationManager.notify(notificacionId2, notificacion2);
+
             }
         });
     }
