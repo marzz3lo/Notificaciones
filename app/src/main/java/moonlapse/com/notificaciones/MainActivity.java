@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
                 NotificationCompat.Action accion = new NotificationCompat.Action.Builder(R.mipmap.ic_action_call, "llamar Wear", intencionPendienteLlamar).build();
 
+                String s = "Texto largo con descripción detallada de la notificación. ";
                 //Creamos una lista de acciones
                 List<NotificationCompat.Action> acciones = new ArrayList<NotificationCompat.Action>();
                 acciones.add(accion);
@@ -44,13 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
                 int notificacionId = 001;
                 Notification notificacion = new NotificationCompat.Builder(MainActivity.this)
-                        .setLargeIcon(BitmapFactory.decodeResource( getResources(), R.drawable.escudo_upv))
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.escudo_upv))
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("Título")
                         .setContentText(Html.fromHtml("<b>Notificación</b> <u>Android Wear</u>"))
                         .setContentIntent(intencionPendienteMapa)
                         .addAction(R.mipmap.ic_action_call, "llamar", intencionPendienteLlamar)
                         .extend(new NotificationCompat.WearableExtender().addActions(acciones))
+                        .setStyle(new NotificationCompat.BigTextStyle().bigText(s + s + s + s))
                         .build();
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
                 notificationManager.notify(notificacionId, notificacion);
