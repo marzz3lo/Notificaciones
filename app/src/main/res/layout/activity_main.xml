@@ -21,7 +21,11 @@
         android:layout_height="wrap_content"
         android:text="Respuesta por voz:"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respuesta por voz(anuncio broadcast)"
+        android:id="@+id/boton_voz_broadcast" />
     <TextView
         android:id="@+id/textViewRespuesta"
         android:layout_width="wrap_content"
